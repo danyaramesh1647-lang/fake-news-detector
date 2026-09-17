@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Verity — Fake News Detector</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+  <header class="masthead">
+    <div class="masthead-inner">
+      <span class="wordmark">Verity</span>
+      <span class="tagline">A desk for checking what you read</span>
+    </div>
+  </header>
+
+  <main class="desk">
+    <section class="intake">
+      <label for="article-text" class="intake-label">Paste a headline or article</label>
+      <textarea id="article-text" placeholder="e.g. Scientists at a university publish a new study on crop resilience in a peer-reviewed journal." rows="8"></textarea>
+
+      <div class="intake-row">
+        <span id="word-count" class="word-count">0 words</span>
+        <button id="analyze-btn" type="button">Analyze text</button>
+      </div>
+
+      <p id="error-msg" class="error-msg" role="alert"></p>
+    </section>
+
+    <section id="verdict-section" class="verdict-section" hidden>
+      <div id="stamp" class="stamp">
+        <span id="stamp-label" class="stamp-label">REAL</span>
+      </div>
+      <div class="verdict-detail">
+        <p class="verdict-heading">Model confidence</p>
+        <div class="confidence-bar">
+          <div id="confidence-fill" class="confidence-fill"></div>
+        </div>
+        <p id="confidence-text" class="confidence-text">— %</p>
+        <p class="verdict-note">This is a statistical estimate from a trained text-classification model, not a fact-check. Cross-check important claims with a primary source.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="colophon">
+    <p>Verity · Fake News Detection using NLP · TF-IDF + linear text classifier</p>
+  </footer>
+
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
